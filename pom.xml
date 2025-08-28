@@ -72,7 +72,7 @@
     <releaseProfiles>fluo-release</releaseProfiles>
     <slf4j.version>2.0.3</slf4j.version>
     <thrift.version>0.17.0</thrift.version>
-    <zookeeper.version>3.9.2</zookeeper.version>
+    <zookeeper.version>3.9.3</zookeeper.version>
   </properties>
   <dependencyManagement>
     <dependencies>
