@@ -7,7 +7,7 @@
 # "License"); you may not use this file except in compliance
 # with the License.  You may obtain a copy of the License at
 #
-#   http://www.apache.org/licenses/LICENSE-2.0
+#   https://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing,
 # software distributed under the License is distributed on an
@@ -17,7 +17,13 @@
 # under the License.
 #
 
-# https://cwiki.apache.org/confluence/display/INFRA/git+-+.asf.yaml+features
+# https://github.com/apache/infrastructure-asfyaml/blob/main/README.md
+
+notifications:
+  commits:      commits@accumulo.apache.org
+  issues:       notifications@accumulo.apache.org
+  pullrequests: notifications@accumulo.apache.org
+  jira_options: worklog
 
 github:
   description: "Apache Fluo"
@@ -31,4 +37,19 @@ github:
     wiki: false
     issues: true
     projects: true
+  dependabot_alerts:  true
+  dependabot_updates: false
 
+  rulesets:
+    - name: "Default Branch Protection"
+      type: branch
+      branches:
+        includes:
+          - "~DEFAULT_BRANCH"
+          - "release/*"
+          - "rel/*"
+        excludes: []
+      bypass_teams:
+        - root
+      restrict_deletion: true
+      restrict_force_push: true
