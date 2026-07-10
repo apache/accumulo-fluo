@@ -188,6 +188,9 @@ public class FluoConfiguration extends SimpleConfiguration {
   public static final String WORKER_NUM_THREADS_PROP = WORKER_PREFIX + ".num.threads";
   public static final int WORKER_NUM_THREADS_DEFAULT = 10;
 
+  public static final String PARALLEL_SCAN_THREADS_PROP = FLUO_PREFIX + ".scan.num.threads";
+  public static final int NUM_PARALLEL_SCAN_THREADS_DEFAULT = 1;
+
   // Loader properties
   private static final String LOADER_PREFIX = FLUO_PREFIX + ".loader";
   public static final String LOADER_NUM_THREADS_PROP = LOADER_PREFIX + ".num.threads";
@@ -632,6 +635,29 @@ public class FluoConfiguration extends SimpleConfiguration {
    */
   public int getWorkerThreads() {
     return getPositiveInt(WORKER_NUM_THREADS_PROP, WORKER_NUM_THREADS_DEFAULT);
+  }
+
+  /**
+   * Sets the number of threads used to execute parallel scans, must be positive. The default is
+   * {@value #NUM_PARALLEL_SCAN_THREADS_DEFAULT} thread. Sets this value in the property
+   * {@value #PARALLEL_SCAN_THREADS_PROP}
+   *
+   * @param numThreads The number of threads to use, must be positive
+   * @since 2.0.0
+   */
+  public FluoConfiguration setNumParallelScanThreads(int numThreads) {
+    return setPositiveInt(PARALLEL_SCAN_THREADS_PROP, numThreads);
+  }
+
+  /**
+   * Gets the value of the property {@value #PARALLEL_SCAN_THREADS_PROP} if set otherwise returns
+   * {@value #NUM_PARALLEL_SCAN_THREADS_DEFAULT}
+   *
+   * @return The number of threads used for parallel scans.
+   * @since 2.0.0
+   */
+  public int getNumParallelScanThreads() {
+    return getPositiveInt(PARALLEL_SCAN_THREADS_PROP, NUM_PARALLEL_SCAN_THREADS_DEFAULT);
   }
 
   /**
