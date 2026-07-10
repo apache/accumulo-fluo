@@ -375,6 +375,7 @@
         <plugin>
           <groupId>org.apache.rat</groupId>
           <artifactId>apache-rat-plugin</artifactId>
+          <version>0.18</version>
           <configuration>
             <excludes>
               <exclude>**/services/org.apache.fluo.core.metrics.ReporterStarter</exclude>
