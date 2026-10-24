@@ -33,6 +33,19 @@ import static org.junit.Assert.fail;
 public class BytesTest {
 
   @Test
+  public void testCompareSubsequences() {
+    Bytes a = Bytes.of("xxabc").subSequence(2, 5);
+    Bytes b = Bytes.of("yyabd").subSequence(2, 5);
+    Assert.assertTrue(a.compareTo(b) < 0);
+    Assert.assertTrue(b.compareTo(a) > 0);
+    Assert.assertFalse(a.equals(b));
+    Assert.assertFalse(a.contentEquals(b.toArray()));
+    Assert.assertTrue(a.compareTo(Bytes.of("abd")) < 0);
+    Assert.assertTrue(a.compareTo(Bytes.of("yyabd").toArray(), 2, 3) < 0);
+    Assert.assertEquals(Bytes.of("abc"), a);
+  }
+
+  @Test
   public void testBytesWrap() {
 
     String s1 = "test1";
