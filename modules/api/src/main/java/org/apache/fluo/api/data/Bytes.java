@@ -252,7 +252,7 @@ public final class Bytes implements Comparable<Bytes>, Serializable {
       return UnsignedBytes.lexicographicalComparator().compare(this.data, bytes);
     } else {
       int minLen = Math.min(this.length, len);
-      for (int i = this.offset, j = offset; i < minLen; i++, j++) {
+      for (int i = this.offset, j = offset; i < this.offset + minLen; i++, j++) {
         int a = (this.data[i] & 0xff);
         int b = (bytes[j] & 0xff);
         if (a != b) {
